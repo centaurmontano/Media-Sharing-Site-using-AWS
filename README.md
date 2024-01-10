@@ -7,7 +7,7 @@
 
 
 
-A comprehensive full-stack media sharing site leveraging Flask and AWS services (Amazon EC2, Amazon S3, Amazon DynamoDB), enabling users to browse, upload, and delete images seamlessly.
+A comprehensive full-stack media sharing site leveraging Flask, Python and AWS services (Amazon EC2, Amazon S3, Amazon DynamoDB), enabling users to browse, upload, and delete images seamlessly.
 
 ## Table of Contents
 - [Overview](#overview)
