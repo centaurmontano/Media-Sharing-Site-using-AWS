@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Photo Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form, .gallery {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+        }
+
+        input[type="text"], input[type="file"], button[type="submit"] {
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .image-container {
+            margin: 10px;
+            text-align: center;
+        }
+
+        .image-container p {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>AWS Photo Gallery</h1>
+
+    <!-- Upload Form -->
+    <form method="post" enctype="multipart/form-data">
+        <!-- Input fields for user to upload a new image -->
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+        <label for="description">Description:</label>
+        <input type="text" name="description" required><br>
+        <label for="location">Location:</label>
+        <input type="text" name="location" required><br>
+        <label for="file">Choose an image to upload:</label>
+        <input type="file" name="file" required><br>
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- Gallery of Images -->
+    <div class="gallery">
+        <!-- Loop through each file in the 'files' variable -->
+        {% for file in files %}
+            <div class="image-container">
+                <!-- Display the image with a link to its thumbnail -->
+                <img src="{{ url_for('thumbnail', key=file.key) }}" alt="{{ file.key }}">
+                <!-- Display the key (file name) of the image -->
+                <p>{{ file.key }}</p>
+                <!-- Form to delete the image -->
+                <form method="post" action="/delete">
+                    <!-- Hidden input field with the image key -->
+                    <input type="hidden" name="key" value="{{ file.key }}">
+                    <!-- Delete button -->
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
