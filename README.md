@@ -1,8 +1,8 @@
 # Media Sharing Site using AWS
 
-A full-stack media sharing site leveraging Flask, AWS services (EC2, S3, DynamoDB), and HTML, enabling users to browse, upload, and delete images seamlessly.
-
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS Logo" width="100" height="100"/> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg" alt="Amazon EC2 Logo" width="100" height="100"/> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg" alt="Amazon S3 Logo" width="100" height="100"/> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg" alt="Amazon DynamoDB Logo" width="100" height="100"/>
+
+A comprehensive full-stack media sharing site leveraging Flask and AWS services (Amazon EC2, Amazon S3, Amazon DynamoDB), enabling users to browse, upload, and delete images seamlessly.
 
 ## Table of Contents
 - [Overview](#overview)
