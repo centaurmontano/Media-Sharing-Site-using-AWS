@@ -38,7 +38,7 @@ def index():
             key = file.filename
             table.put_item(
                 Item={
-                    'id': key,
+                    'ImageKey': key,
                     'name': name,
                     'description': description,
                     'location': location
@@ -61,15 +61,20 @@ def index():
                     url = url_for('thumbnail', key=obj['Key'])
                     
                     # Retrieve metadata from DynamoDB
-                    response = table.get_item(
-                        Key={
-                            'id': obj['Key']
-                        }
-                    )
-                    name = response['Item']['name']
-                    description = response['Item']['description']
-                    location = response['Item']['location']
-                    files.append({'key': obj['Key'], 'url': url, 'name': name, 'description': description, 'location': location})
+                    try:
+                        response = table.get_item(
+                            Key={
+                                'ImageKey': obj['Key']
+                            }
+                        )
+                        name = response['Item']['name']
+                        description = response['Item']['description']
+                        location = response['Item']['location']
+                        files.append({'key': obj['Key'], 'url': url, 'name': name, 'description': description, 'location': location})
+                    except KeyError:
+                        logger.warning(f"No metadata found for key {obj['Key']}")
+                    except Exception as e:
+                        logger.error(f"Error retrieving metadata for key {obj['Key']}: {str(e)}")
         except Exception as e:
             logger.error(f"Error retrieving files: {str(e)}")
             files = []
@@ -85,7 +90,7 @@ def delete_file():
         # Delete metadata from DynamoDB
         table.delete_item(
             Key={
-                'id': key
+                'ImageKey': key
             }
         )
         flash('File deleted successfully')
@@ -94,21 +99,31 @@ def delete_file():
         flash('Error deleting file')
     return redirect('/')
 
+from flask import abort
+
 @app.route('/thumbnail/<key>')
 def thumbnail(key):
     try:
         # Generate and serve thumbnail
-        response = s3.get_object(Bucket='cmwebsolutions', Key=key)  # Replace 'cmwebsolutions' with your S3 bucket name
+        response = s3.get_object(Bucket='cmwebsolutions', Key=key)
         image = Image.open(BytesIO(response['Body'].read()))
         image.thumbnail((200, 200))
         image = image.convert('RGB')
+        
         with BytesIO() as output:
             image.save(output, format='JPEG')
             contents = output.getvalue()
+        
         return Response(contents, mimetype='image/jpeg')
+    
+    except s3.exceptions.NoSuchKey:
+        logger.error(f"Object not found in S3: {key}")
+        abort(404)
+    
     except Exception as e:
-        logger.error(f"Error generating thumbnail: {str(e)}")
-        return Response(status=500)
+        logger.error(f"Error generating thumbnail for key {key}: {str(e)}")
+        abort(500)
+
 
 # Run the app
 if __name__ == '__main__':
