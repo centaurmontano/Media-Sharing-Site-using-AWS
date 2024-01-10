@@ -1,5 +1,7 @@
 # Media Sharing Site using AWS
 
+A full-stack media sharing site leveraging Flask, AWS services (EC2, S3, DynamoDB), and HTML, enabling users to browse, upload, and delete images seamlessly.
+
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
