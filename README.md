@@ -70,7 +70,7 @@ Amazon DynamoDB is a fully managed NoSQL database service that provides fast and
 
 ## Conclusion
 
-Thank you for exploring our Media Sharing Site using AWS! This project can serve as a foundation for various applications, including:
+This project can serve as a foundation for various applications, including:
 
 1. **Social Media Platforms:** Enhance user experience by allowing seamless image sharing and browsing within social networking sites.
 
