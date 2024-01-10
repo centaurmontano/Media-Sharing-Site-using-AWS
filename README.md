@@ -1,45 +1,38 @@
-# Building a Media Sharing Website
+AWS Services
+Amazon EC2:
 
-## Procedure
+Hosting the web application.
+Amazon S3 Bucket:
 
-1. **Creation of an Amazon S3 Bucket**
+Storing and serving media files (images).
+DynamoDB:
 
-   - Create a bucket named "assignmentarchitecture" using either CLI or the AWS UI. For this assignment, the UI is recommended due to frequent changes.
-   - Choose a unique name for the bucket that has not been used before.
-   - Select the region where the bucket should be created and press the "Create" button.
-   - After creating the bucket, add your media files to it.
-   - By default, the bucket is not accessible to the public. To make it public, go to the "Permissions" section under "Block public access (bucket settings)."
-   - Assign a policy to the bucket to allow outside users to perform actions like PUT and GET. Use the policy generator and specify the required permissions, such as "PutObject" and "GetObject."
+Database for managing user data and media information.
+Features
+Browse, Upload, and Delete Images:
 
-2. **Creating an Amazon DynamoDB Database**
+Users can browse through uploaded images.
+Upload images through a user-friendly interface.
+Delete unwanted images with ease.
+User Interface:
 
-   - Click the "Create Table" button on the DynamoDB console in your AWS account.
-   - Specify a name, primary key, and any additional properties for your table. For example, use "assignment" as the table name with "ID" as the primary key.
-   - Set up your table's throughput and encryption preferences according to your requirements.
-   - Review your table's specifics and create the table.
+Intuitive and responsive design for seamless user experience.
+Simple navigation for browsing and managing media content.
+Media Limited to Images:
 
-3. **Launching a new Amazon EC2 Instance**
+The site specifically caters to image sharing.
+Usage
+Browse Images:
 
-   - In the EC2 console of your AWS account, click on the "Launch Instance" button.
-   - Choose an Amazon Machine Image (AMI) for your instance (e.g., the default option).
-   - Select an instance type based on your application requirements. A "t2.micro" instance should suffice for basic work.
-   - Configure your instance details, including network settings, storage, and security groups.
-   - Make sure to attach the "LabRole" under Additional settings. This allows using IAM policies assigned to the "LabRole" role without needing access keys or credentials.
-   - Review your instance details and launch your instance.
+Navigate through the site to view a collection of shared images.
+Upload Images:
 
-4. **Creating the Web Application using Python inside EC2**
+Use the upload feature to share your images with the community.
+Delete Images:
 
-   - Access the CLI of the instance or connect via SSH. Install Python, Pip, Pillow, Boto3, and Flask.
-   - Python is used to write the main code (`app.py` in our case) and `index.html` to display the webpage.
-   - Pip is a package manager for Python, used to install other libraries and modules.
-   - Boto3 is an AWS SDK for Python, allowing interaction with services like S3 and EC2.
-   - Pillow is a Python library used for web development and ML, including resizing and converting image formats.
-   - Flask is a web framework for Python that helps build web applications. It receives images, creates thumbnails, and displays them on the webpage table. It also sends metadata to DynamoDB.
+Manage your uploaded images by easily deleting them.
+Contributing
+Feel free to contribute by opening issues or creating pull requests. Your feedback and enhancements are highly appreciated.
 
-5. **How Everything Works**
-
-   - `index.html`: This file lays out the forms where users can input their information. It displays the information in a table with an option to delete each entry received.
-   - `app.py`: This file defines the Flask application, routes URLs to functions handling requests, returns HTML content to the browser, connects with the database and S3, and displays content on the browser.
-   - Both S3 and DynamoDB are connected via EC2, which can send data and delete resources simultaneously.
-
-By following these steps, you can build a media sharing website that securely stores user data, media files, and metadata in AWS services like S3 and DynamoDB.
+License
+This project is licensed under the MIT License.
