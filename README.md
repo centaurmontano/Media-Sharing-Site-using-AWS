@@ -45,7 +45,8 @@ This project is a Media Sharing Site built on [Amazon Web Services (AWS)](https:
 
 ### Amazon EC2:
 
- [EC2 Instance Connect](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html).
+Connect using EC2 Instance Connect
+[ [EC2 Instance Connect](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html).](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-methods.html#ec2-instance-connect-connecting-console)
   
  
  ### Amazon S3 Bucket:
@@ -53,10 +54,14 @@ This project is a Media Sharing Site built on [Amazon Web Services (AWS)](https:
 **Overview:**
 Amazon S3 (Simple Storage Service) is a scalable object storage service for storing and retrieving any amount of data.
 
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html
+
 
 ### DynamoDB:
 
 **Overview:**
 Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance.
 
+
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/getting-started-step-1.html
 
