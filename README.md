@@ -43,9 +43,81 @@ This project is a Media Sharing Site built on [Amazon Web Services (AWS)](https:
 3. Configure the Flask app.
 4. Run the application locally or deploy it on [Amazon EC2](https://aws.amazon.com/ec2/).
 
-### Setting Up AWS Credentials
-To set up AWS credentials on your local machine using AWS CLI, follow these steps:
-1. Install AWS CLI by following the instructions in the [AWS CLI Installation Guide](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html).
-2. Open a terminal and run the following command:
-   ```bash
-   aws configure
+### Amazon EC2:
+
+**Overview:**
+Amazon EC2 (Elastic Compute Cloud) is a scalable cloud computing service that allows you to host applications on virtual servers, known as instances.
+
+**Steps:**
+1. **Log in to AWS Console:**
+   - Access your [AWS Management Console](https://aws.amazon.com/).
+
+2. **Navigate to EC2:**
+   - Go to the EC2 service.
+
+3. **Launch an Instance:**
+   - Click "Launch Instance" to create a virtual server.
+
+4. **Choose an AMI:**
+   - Select an Amazon Machine Image (AMI) suitable for your application.
+
+5. **Configure Instance:**
+   - Set instance details, choose instance type, configure networking, and add storage.
+
+6. **Configure Security Group:**
+   - Set up security groups to allow incoming traffic on ports like 80 (HTTP) or 443 (HTTPS).
+
+7. **Review and Launch:**
+   - Review your configuration and launch the instance.
+
+8. **Create or Select a Key Pair:**
+   - Create a key pair for secure connection to the instance.
+
+9. **Access the Instance:**
+   - Obtain the public IP or DNS of your instance and connect using SSH or [EC2 Instance Connect](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html).
+  
+   https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html
+
+   ### Amazon S3 Bucket:
+
+**Overview:**
+Amazon S3 (Simple Storage Service) is a scalable object storage service for storing and retrieving any amount of data.
+
+**Steps:**
+1. **Log in to AWS Console:**
+   - Access your [AWS Management Console](https://aws.amazon.com/).
+
+2. **Navigate to S3:**
+   - Go to the S3 service.
+
+3. **Create a Bucket:**
+   - Click "Create Bucket" to create a storage container.
+
+4. **Configure Bucket:**
+   - Enter a unique bucket name and choose the region for the bucket.
+   - Configure additional settings like versioning, logging, etc.
+
+5. **Review and Create:**
+   - Review your configuration and create the bucket.
+
+### DynamoDB:
+
+**Overview:**
+Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance.
+
+**Steps:**
+1. **Log in to AWS Console:**
+   - Access your [AWS Management Console](https://aws.amazon.com/).
+
+2. **Navigate to DynamoDB:**
+   - Go to the DynamoDB service.
+
+3. **Create a Table:**
+   - Click "Create Table" to define a table.
+
+4. **Configure Table:**
+   - Enter a table name, primary key, and configure provisioned capacity if needed.
+
+5. **Review and Create:**
+   - Review your configuration and create the table.
+
